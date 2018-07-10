@@ -1,6 +1,7 @@
-package dao;
+package com.example.dao;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.modelo.Empleado;
 
 
 public class EmpleadosDAO  implements Idao {
@@ -24,22 +27,22 @@ public class EmpleadosDAO  implements Idao {
 	
 	@Override
 	@Transactional
-	public  LinkedList <Empleados> getListEmpleados(){
-		Linkedlist <Empleados> listaEmpleados = (LinkedList<Empleados>) sessionFactory.getCurrentSession ()
-				.createCriteria (Empleados.Class)
+	public  LinkedList <Empleado> getListEmpleados(){
+		Linkedlist <Empleado> listaEmpleados = (LinkedList<Empleado>) sessionFactory.getCurrentSession ()
+				.createCriteria (Empleado.Class)
 				.setResultTransformer (Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listaEmpleados;
 	}
 	
 	@Override
 	@Transactional
-	public void add(Empleado empleado){
+	public void add(Object empleado){
 		sessionFactory.getCurrentSession().save(empleado);
 	}
 	
 	@Override
 	@Transactional
-	public void update(Empleado empleado){
+	public void update(Object empleado){
 		sessionFactory.getCurrentSession().update(empleado);
 	}
 	
@@ -47,13 +50,13 @@ public class EmpleadosDAO  implements Idao {
 	@Transactional
 	public void delete(int id){
 		Empleado emplBorrar = new Empleado();
-		emplBorrar.setId (id);
+		emplBorrar.setIdempleados (id);
 		sessionFactory.getCurrentSession().delete(emplBorrar);
 	}
 	
 	@Override
 	@Transactional
-	public Empleados getObject(int id){
+	public Empleado getObject(int id){
 		String hql = "from Empleado where id="+id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Empleado> listEmpl = (List<Empleado>) query.list();
@@ -62,5 +65,7 @@ public class EmpleadosDAO  implements Idao {
 		}
 		return null;
 	}
+
+	
 
 }
