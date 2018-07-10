@@ -2,6 +2,10 @@ package com.example.servicios;
 
 import java.util.LinkedList;
 
+import com.example.modelo.Empleado;
+
+
+
 
 public interface IServicios<T> {
 
@@ -12,9 +16,9 @@ public interface IServicios<T> {
 	
 	public T getObject(int id);
 	
-	public void delete (T object);
+	public void delete (int object);
 	
 	
 	
-	 public LinkedList<Empleados> getListEmpleados ();
+	 public LinkedList<Empleado> getListEmpleados ();
 }
