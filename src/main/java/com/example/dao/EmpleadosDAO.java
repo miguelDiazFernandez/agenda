@@ -18,7 +18,7 @@ public class EmpleadosDAO  implements Idao {
 		
 	}
 	
-	public EmpleadosDAO (sessionFactory){
+	public EmpleadosDAO (sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 	
