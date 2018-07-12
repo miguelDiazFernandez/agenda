@@ -1,6 +1,7 @@
 package com.example.servicios;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import com.example.modelo.Empleado;
 
@@ -20,5 +21,5 @@ public interface IServicios<T> {
 	
 	
 	
-	 public LinkedList<Empleado> getListEmpleados ();
+	 public List<Empleado> getListEmpleados ();
 }
